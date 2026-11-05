@@ -1,3 +1,5 @@
+https://github.com/user-attachments/assets/d2461d7e-3aed-4338-a526-2c34a35b7c65
+
 # 🎬 Animasyon Stüdyosu
 
 Claude Code için tam donanımlı bir video stüdyosu. Gerçek yayınlarda, gerçek müşteri işlerinde pişti. Fikri söylüyorsun; araştırmadan bitmiş videoya kadar bütün hattı yürütüyor.
