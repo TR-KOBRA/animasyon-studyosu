@@ -15,6 +15,7 @@ Eksik ÖNERİ varsa ne kazandıracağını ve maliyetini tek cümleyle söyle, k
 
 ## Anahtar güvenliği
 - **Anahtarı sohbette isteme.** `python scripts/baglan.py ekle elevenlabs --pencere` komutunu arka planda sen başlat: ekranda küçük pencere açılır, kullanıcı yapıştırıp Kaydet'e basar. Terminal yolu: `--terminal`.
+- Anahtarı normal tarayıcıda (Chrome, Edge) kopyalat. Claude uygulamasının içindeki tarayıcıdan kopyalanan yazı Windows panosuna geçmez; pencerede eski pano yazısı görünür. ElevenLabs'te yeni anahtarın izinleri kapalı gelir: Text to Speech, Sound Effects, Music Generation, Voices (Read) açılmalı.
 - Kullanıcı anahtarı sohbete yapıştırırsa kullanma ve hiçbir dosyaya yazma. Sohbete düştüğü için sızmış say:
   servisin sitesinden iptal edip yenisini oluşturmasını söyle.
 - Anahtarı ekrana, kayda, komut satırına, proje dosyasına ya da GitHub'a yazma. Doğrulama: `baglan.py dogrula`.
