@@ -36,6 +36,7 @@ etiketli tek görselde göster, seçilen tarzı konunun kendi sahnesiyle tek kar
 - **Gerçekçi AI video**: Flow/Veo.
 - **Harman**: Flow klipleri gövde + kodla çizilmiş hareketli grafik (bir parodide sevildi).
 
+Brifte iş türü belli olunca `python scripts/baglan.py durum` ve `oneri <iş>` çalıştır: bağlı servisleri ve eksikleri söyle, en iyi sonuç için ne bağlanmalı öner (`references/entegrasyonlar.md`).
 Herhangi bir hareket, efekt ya da geçişi yazmadan önce `references/hareket-ve-efekt.md`'ye bak: çoğu
 zaten kurulu. Dış repo adayları ve kurulmaması gerekenler: `references/arac-haritasi.md`.
 Hangi sayfa için (kitle, ton, logo, ses): `references/sayfalar.md`. Geçmiş projeler ve dersleri:
@@ -77,6 +78,7 @@ Her zaman:
   olmamış olayı (yıkım) gerçekmiş gibi gösterme, sembolik anlat.
 - **Bilgisayarı asla sormadan kapatma** ("yatıyorum" onay değildir).
 - İndirme, dış servise yükleme, kredi harcayan üretim (Flow, Blender generate_3d): önce izin, maliyeti söyle.
+- **API anahtarını sohbette isteme.** Kullanıcı kendi terminalinde `baglan.py ekle` ile girer. Sohbete yapıştırırsa kullanma, iptal ettirip yenisini aldır.
 - Klasör yolları ASCII (Türkçe karakterli yollar araçları bozuyor).
 
 ## 4. Kodla film: hızlı başlangıç (anidoodle motoru; elle çizim, 2D ve low-poly tarzları)
@@ -113,6 +115,9 @@ ayrıca her çekimin ortasından kare içeren kontrol sayfası (Read ile bak). �
 | Özneyi arka plandan ayır | `ozne_ayir.py <png\|klasör> <çıktı>` (venv_goruntu) | videoda kenar titreyebilir |
 | Sesten ağız hareketi | `agiz_senkron.sh <ses> <json>` + kitte `mouthAt`, `mouthOpen` | sadece konuşma sesi ver |
 | Akıcılık, ağır çekim | `ara_kare.sh <girdi> <çıktı> [fps] [yavaşlatma]` | hızlı arka planda bulanıklaşır; çizime uygulama |
+| Bağlantı durumu, araç önerisi, anahtar | `baglan.py durum`, `oneri <iş>`, `ekle <servis>`, `dogrula` | anahtarı Claude'a yazma |
+| ElevenLabs ses, efekt, müzik | `eleven.py sesler`, `konus`, `efekt`, `muzik` | kredi harcar; `--onay` şart |
+| API ile AI video | `omni.py --prompt ... --out ...` | Flow kredisi geçmez; `--onay` şart |
 | Müzik vuruşu, kesme hatası | `vurus_izgara.py <müzik> --film <ad.ts>` (venv) | seyrek vuruşlu parçada güvenilmez; bas uyarısını ciddiye al |
 
 `venv_goruntu` = `~/araclar/venv_goruntu/Scripts/python.exe -I`; `venv` = `.../araclar/venv/...`.

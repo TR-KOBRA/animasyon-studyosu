@@ -43,6 +43,21 @@ Kendi sesinle anlatımlı video yapacaksan `bash kur.sh --ses` kullan (yaklaşı
 
 Windows üzerinde Git Bash ile denendi. Başka sistemlerde yollar değişebilir.
 
+## 🔌 Bağlantılar
+
+Sistem işe göre neyin bağlı olduğuna bakar, en iyi sonuç için ne eklemen gerektiğini söyler:
+
+```bash
+python animasyon-studyosu/scripts/baglan.py durum
+python animasyon-studyosu/scripts/baglan.py oneri gercekci
+```
+
+- 🎙️ **ElevenLabs:** anlatım, efekt ve müzik doğrudan API ile. `python animasyon-studyosu/scripts/baglan.py ekle elevenlabs`
+- 🎥 **Gemini Omni Flash:** API ile AI video (ayrı ücretlidir). `python animasyon-studyosu/scripts/baglan.py ekle gemini`
+- 🌊 **Google Flow:** herkese açık API'si yok, kendi aboneliğinle tarayıcıdan kullanılır.
+
+🔐 Anahtarını Claude'a yazma: kendi terminaline gir. Sadece kendi bilgisayarında, depo dışında durur. Para harcayan her üretim önce sorar, `--onay` olmadan istek gitmez.
+
 ## Başlangıç
 Claude Code'da "yeni bir video yapalım" demen yeterli. Elle proje kurmak için:
 
@@ -57,6 +72,7 @@ bash ~/.claude/skills/animasyon-studyosu/scripts/yeni_proje.sh ornek --tarz wren
 - Gerçek işlerde en çok mürekkep-laviş, karikatür ve Flow/Veo yolu kullanıldı. Three.js ve Blender yolları yazılı ama henüz videoda denenmedi.
 - `vurus_izgara.py` seyrek vuruşlu parçalarda güvenilir değil.
 - Claude ses dinleyemez: sonuçları ölçer, kulak kontrolü sende.
+- ElevenLabs ve Gemini araçları resmî belgelere göre yazıldı, sahte sunucuyla test edildi; gerçek hesapla ilk denemede küçük bir örnekle başla.
 
 ## Lisans
 MIT (`LICENSE`). anidoodle'dan türeyen üç şablon dosyası Apache-2.0 altında kalır: `NOTICE` ve `LICENSES/Apache-2.0.txt`.

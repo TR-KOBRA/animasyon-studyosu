@@ -12,6 +12,7 @@ Onaylanan brif projenin köküne `BRIF.md` olarak kaydedilir; sonraki her karar 
 | Format | 1080x1920, 30 fps | |
 | Çizim tekniği | <tarz> (anahtar: <anidoodle anahtarı>) | adaylar ve neden bu: … |
 | Ses | kullanıcının sesi / ElevenLabs / şarkı / müzik + ortam | ses ya da müzik kaynağı, lisansı: … |
+| Araçlar | <bağlı olanlar; eksikte seçilen yol> | `baglan.py oneri` |
 | Simge | <filmin başında doğup sonda dönen görsel> | |
 | Renk eğrisi | <başlangıç → kırılma → son> | |
 | Logo | <hangi, nerede, hangi görünüm> | |

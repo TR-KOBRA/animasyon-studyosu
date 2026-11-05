@@ -47,4 +47,6 @@ if [ "$SES" = 1 ]; then
 else echo "  geçildi (kendi sesini oturtacaksan: bash kur.sh --ses)"; fi
 
 echo
+"$PY" "$D/scripts/baglan.py" durum || true
+echo
 echo "Hazır. Claude Code'u yeniden aç ve yaz: yeni bir video yapalım"

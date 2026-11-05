@@ -3,6 +3,8 @@
 Kullanıcının Gemini Ultra aboneliğiyle Flow (labs.google/flow), built-in browser üzerinden. API
 faturası istemiyor. Kredi pahalı: üretimden önce maliyeti söyle ve izin al.
 
+API ile otomatik üretim ve Flow farkı: `entegrasyonlar.md`. Flow'un kendi API'si yok.
+
 ## Kredi ve model
 - Veo 3.1 **Fast** x4 = 40 kredi; **Quality** x1 = 100, x4 = 400. Önce Fast ile dene.
 - Quality referans görsel (Ingredients) kabul etmez; Ingredients modu için Fast.

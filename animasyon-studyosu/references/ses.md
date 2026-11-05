@@ -7,9 +7,11 @@ ffmpeg ile okur/yazar, 48 kHz. Betikler proje kurulunca `film/tools/` altına ko
 Kullanıcının kendi kaydı (sayfa belgeseli), AI ses (gençlik sayfası işleri) ya da şarkı.
 Kural aşağıdaki "kendi kaydı" içindir; AI seste kesme, hız (1,1x), kazanç serbesttir.
 
-**AI ses:** ElevenLabs, kullanıcının kendi hesabı (v4 model, `[dramatic]`, `[long pause]` etiketleri; müzik için ElevenLabs Music). Kredi harcar: izin al.
-Yedek: edge-tts tr-TR-AhmetNeural (7.3.1+; 7.2.8 403 veriyor). Üretilen cümleleri tek tek dosya tut,
-sahneye yerleştir; `seslendirme_oturt.py` yerine kayıt tek parçaysa yine kullanılabilir.
+**AI ses:** ElevenLabs API varsa `eleven.py` (`entegrasyonlar.md`): önce `sesler`, kısa örnek, kullanıcı seçer, sonra
+`konus --metin metin.txt --ses <id> --out kayit/ham.wav --kelimeler kayit/kelimeler.json --onay`. Kelime zamanları hazır gelir,
+2. adım atlanır, 3. adımdan devam edilir. API yoksa kullanıcının ElevenLabs sitesinden indirdiği sesler; o zaman 2. adım gerekir.
+İfade etiketleri (`[dramatic]`, `[long pause]`) modele göre değişir: kısa örnekle dene. Kredi harcar: izin al.
+Yedek: edge-tts tr-TR-AhmetNeural (7.3.1+; 7.2.8 403 veriyor).
 
 ## Kural (kullanıcının kendi kaydı)
 Kullanıcının sesi olduğu gibi kalır: gürültü temizleme (DeepFilterNet kurulu ama KULLANILMAZ),

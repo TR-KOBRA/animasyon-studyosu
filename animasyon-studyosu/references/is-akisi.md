@@ -23,6 +23,7 @@ onayı, sonra kod, kontak sayfası, cilalama (`promptlar/10-cilalama.md`).
   4. Tarz: çizim tekniğini seçtir (varsayılan yok; `tarzlar.md`: 3 aday + galeri + tek kare deneme)
   5. Sayfa ve logo: hangi sayfa/müşteri (`sayfalar.md`), logo nerede
   5b. "Temsili çizim/canlandırma" ibaresi konsun mu (özellikle bilimsel canlandırmada)
+  5c. Araçlar: `baglan.py oneri <iş>` çıktısını özetle; eksik servis için kazanç ve maliyeti söyle (`entegrasyonlar.md`)
   6. Kapanış çağrısı: haber sayfasında içerik üreticisi vaadi YOK ("sonraki videoda…" denmez);
      tek yorum çağrısı ("Yorumlarda etiketle" gibi)
 
