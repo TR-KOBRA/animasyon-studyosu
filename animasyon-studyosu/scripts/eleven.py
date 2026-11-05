@@ -19,7 +19,7 @@ def die(m): print("HATA:", m); sys.exit(1)
 
 def api(path, body=None):
     k = key("elevenlabs")
-    if not k: die("ElevenLabs anahtarı yok. Kullanıcı kendi terminalinde çalıştırsın: python baglan.py ekle elevenlabs")
+    if not k: die("ElevenLabs anahtarı yok. Pencere için: python baglan.py ekle elevenlabs")
     h = {"xi-api-key": k}
     if body is not None: h["Content-Type"] = "application/json"
     req = urllib.request.Request(BASE + path, data=None if body is None else json.dumps(body).encode(), headers=h)

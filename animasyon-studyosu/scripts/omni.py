@@ -28,7 +28,7 @@ oran, coz = opt("--oran", "9:16"), opt("--cozunurluk", "720p")
 if "--onay" not in a:
     print(f"Video: {MODEL}, {oran}, {coz}, {len(images)} görsel. Prompt: {prompt[:120]}\nBu işlem API faturasına yazar. Kullanıcı onaylarsa aynı komutu --onay ile çalıştır."); sys.exit(0)
 k = key("gemini")
-if not k: die("Gemini anahtarı yok. Kullanıcı kendi terminalinde çalıştırsın: python baglan.py ekle gemini")
+if not k: die("Gemini anahtarı yok. Pencere için: python baglan.py ekle gemini")
 
 def call(path, body=None, raw=False):
     h = {"x-goog-api-key": k}

@@ -9,10 +9,11 @@
 Anahtar sırası: ortam değişkeni (ELEVENLABS_API_KEY, GEMINI_API_KEY), sonra ~/.config/animasyon-studyosu/anahtarlar.json.
 Bu dosya skill klasörünün ve projelerin DIŞINDADIR, GitHub'a gitmez. Düz metin tutulur: bilgisayarını paylaşıyorsan ortam değişkeni kullan.
 """
-import getpass, json, os, shutil, stat, sys, urllib.error, urllib.request
+import getpass, json, os, re, shutil, stat, sys, urllib.error, urllib.request
 
 KEYFILE = os.path.join(os.path.expanduser("~"), ".config", "animasyon-studyosu", "anahtarlar.json")
 ENV = {"elevenlabs": "ELEVENLABS_API_KEY", "gemini": "GEMINI_API_KEY"}
+BICIM = {"elevenlabs": r"sk_[A-Za-z0-9_-]{20,}", "gemini": r"AIza[A-Za-z0-9_-]{30,}"}
 ARAC = os.environ.get("ARACLAR") or os.path.join(os.path.expanduser("~"), "araclar")
 SKILLS = os.path.join(os.path.expanduser("~"), ".claude", "skills")
 
@@ -20,9 +21,16 @@ def stored():
     try: return json.load(open(KEYFILE, encoding="utf-8"))
     except (OSError, ValueError): return {}
 
+def temiz(name, s):
+    """the key inside pasted text, or "" when there is none: extra words must never be stored or sent"""
+    s = (s or "").strip()
+    found = set(re.findall(BICIM[name], s))
+    if len(found) == 1: return found.pop()
+    return s if re.fullmatch(r"[!-~]{20,200}", s) else ""
+
 def key(name):
     """the key for a service, or None; callers must never print it"""
-    return os.environ.get(ENV[name]) or stored().get(name)
+    return temiz(name, os.environ.get(ENV[name]) or stored().get(name)) or None
 
 def venv_has(venv, mod):
     return any(os.path.isdir(os.path.join(ARAC, venv, p, mod)) for p in ("Lib/site-packages", f"lib/python{sys.version_info[0]}.{sys.version_info[1]}/site-packages"))
@@ -92,15 +100,16 @@ def pencere(name):
     tk.Label(r, text=f"{name} API anahtarını yapıştır. Sadece bu bilgisayarda saklanır.", padx=16, pady=10).pack()
     e = tk.Entry(r, show="•", width=52); e.pack(padx=16); e.focus_force()
     info = tk.Label(r, text="Önce sitede anahtarı kopyala, sonra Yapıştır'a bas.", pady=6); info.pack()
-    def goster(*_): n = len(e.get().strip()); info.config(text=f"{n} karakter geldi. Kaydet'e bas." if n else "Kutu boş.", fg="#1b6e2c" if n else "#b00020")
+    def goster(*_):
+        ok_ = bool(temiz(name, e.get()))
+        info.config(text="Anahtar tamam, Kaydet'e bas." if ok_ else "Bu yazı anahtara benzemiyor: sitede sadece anahtarı kopyala.", fg="#1b6e2c" if ok_ else "#b00020")
     def yapistir(*_):
-        try: k = r.clipboard_get().strip()
+        try: k = r.clipboard_get()
         except tk.TclError: k = ""
-        if not k: info.config(text="Panoda yazı yok: sitede anahtarı yeniden kopyala.", fg="#b00020"); return "break"
-        e.delete(0, "end"); e.insert(0, k); goster(); return "break"
+        e.delete(0, "end"); e.insert(0, temiz(name, k)); goster(); return "break"
     def ok(*_):
-        k = e.get().strip()
-        if not k: info.config(text="Kutu boş: önce Yapıştır'a bas.", fg="#b00020"); return
+        k = temiz(name, e.get())
+        if not k: goster(); return
         out["k"] = k; r.destroy()
     row = tk.Frame(r); row.pack(pady=12)
     tk.Button(row, text="Yapıştır", command=yapistir, padx=20).pack(side="left", padx=6)
@@ -115,7 +124,8 @@ def ekle(name):
         print(f"{name} anahtarını gir. Bu bilgi sadece bu bilgisayarda kalır; Claude'a yazma.")
         k = (getpass.getpass("Anahtar: ") if sys.stdin.isatty() else sys.stdin.readline()).strip()
     else: k = pencere(name)
-    if not k: sys.exit("anahtar girilmedi, hiçbir şey yazılmadı")
+    k = temiz(name, k)
+    if not k: sys.exit("anahtar girilmedi ya da anahtara benzemiyor, hiçbir şey yazılmadı")
     d = stored(); d[name] = k
     os.makedirs(os.path.dirname(KEYFILE), exist_ok=True)
     with open(KEYFILE, "w", encoding="utf-8") as f: json.dump(d, f)
