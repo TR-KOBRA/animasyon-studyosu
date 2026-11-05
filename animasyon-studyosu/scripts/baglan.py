@@ -26,7 +26,7 @@ def temiz(name, s):
     s = (s or "").strip()
     found = set(re.findall(BICIM[name], s))
     if len(found) == 1: return found.pop()
-    return s if re.fullmatch(r"[!-~]{20,200}", s) else ""
+    return s if name != "elevenlabs" and re.fullmatch(r"[!-~]{20,200}", s) else ""  # ElevenLabs: without sk_ it is the key ID, not the key
 
 def key(name):
     """the key for a service, or None; callers must never print it"""
@@ -88,7 +88,10 @@ def dogrula():
         if not k: print(f"  ⬜ {name}: anahtar yok"); continue
         try:
             urllib.request.urlopen(urllib.request.Request(url, headers={header: k}), timeout=20); print(f"  ✅ {name}: anahtar çalışıyor")
-        except urllib.error.HTTPError as e: print(f"  ❌ {name}: anahtar reddedildi (HTTP {e.code})")
+        except urllib.error.HTTPError as e:
+            try: why = json.load(e)["detail"]["message"]
+            except (ValueError, KeyError, TypeError): why = ""
+            print(f"  ❌ {name}: anahtar reddedildi (HTTP {e.code}) {why}".rstrip())
         except OSError as e: print(f"  ❌ {name}: bağlanılamadı ({e})")
 
 def ozet(s):
