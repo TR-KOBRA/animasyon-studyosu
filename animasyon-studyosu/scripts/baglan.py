@@ -3,7 +3,7 @@
   python baglan.py durum                  neler bağlı, neler eksik (anahtarı asla göstermez)
   python baglan.py dogrula                anahtarlar çalışıyor mu (kredi harcamayan bir istekle)
   python baglan.py oneri <is>             bu iş için en iyi araçlar; is: anlatim, parodi, gercekci, kurgu, muzik
-  python baglan.py ekle <elevenlabs|gemini>   anahtarı KENDİ terminalinde gir (Claude'a yazma)
+  python baglan.py ekle <elevenlabs|gemini>   anahtar için küçük pencere açar (--terminal: terminalden gir); Claude'a yazma
   python baglan.py sil <elevenlabs|gemini>
 
 Anahtar sırası: ortam değişkeni (ELEVENLABS_API_KEY, GEMINI_API_KEY), sonra ~/.config/animasyon-studyosu/anahtarlar.json.
@@ -83,11 +83,39 @@ def dogrula():
         except urllib.error.HTTPError as e: print(f"  ❌ {name}: anahtar reddedildi (HTTP {e.code})")
         except OSError as e: print(f"  ❌ {name}: bağlanılamadı ({e})")
 
+def pencere(name):
+    """a small masked window: the key never touches a terminal or the chat. An empty box never closes it,
+    and the paste button works when Ctrl+V does not (Tk ignores it while Caps Lock is on)."""
+    import tkinter as tk
+    r = tk.Tk(); r.title(f"{name} anahtarı"); r.attributes("-topmost", True); r.resizable(False, False)
+    out = {"k": ""}
+    tk.Label(r, text=f"{name} API anahtarını yapıştır. Sadece bu bilgisayarda saklanır.", padx=16, pady=10).pack()
+    e = tk.Entry(r, show="•", width=52); e.pack(padx=16); e.focus_force()
+    info = tk.Label(r, text="Önce sitede anahtarı kopyala, sonra Yapıştır'a bas.", pady=6); info.pack()
+    def goster(*_): n = len(e.get().strip()); info.config(text=f"{n} karakter geldi. Kaydet'e bas." if n else "Kutu boş.", fg="#1b6e2c" if n else "#b00020")
+    def yapistir(*_):
+        try: k = r.clipboard_get().strip()
+        except tk.TclError: k = ""
+        if not k: info.config(text="Panoda yazı yok: sitede anahtarı yeniden kopyala.", fg="#b00020"); return "break"
+        e.delete(0, "end"); e.insert(0, k); goster(); return "break"
+    def ok(*_):
+        k = e.get().strip()
+        if not k: info.config(text="Kutu boş: önce Yapıştır'a bas.", fg="#b00020"); return
+        out["k"] = k; r.destroy()
+    row = tk.Frame(r); row.pack(pady=12)
+    tk.Button(row, text="Yapıştır", command=yapistir, padx=20).pack(side="left", padx=6)
+    tk.Button(row, text="Kaydet", command=ok, padx=20).pack(side="left", padx=6)
+    r.bind("<Return>", ok); e.bind("<Control-V>", yapistir); e.bind("<Button-3>", yapistir); e.bind("<KeyRelease>", goster)
+    r.update_idletasks(); r.geometry(f"+{(r.winfo_screenwidth() - r.winfo_width()) // 2}+{(r.winfo_screenheight() - r.winfo_height()) // 3}")
+    r.mainloop(); return out["k"]
+
 def ekle(name):
     if name not in ENV: sys.exit(f"bilinmeyen servis: {name}")
-    print(f"{name} anahtarını gir. Bu bilgi sadece bu bilgisayarda kalır; Claude'a yazma.")
-    k = (getpass.getpass("Anahtar: ") if sys.stdin.isatty() else sys.stdin.readline()).strip()
-    if not k: sys.exit("boş anahtar, hiçbir şey yazılmadı")
+    if "--terminal" in sys.argv or not sys.stdin.isatty() and not sys.stdin.closed and "--pencere" not in sys.argv:
+        print(f"{name} anahtarını gir. Bu bilgi sadece bu bilgisayarda kalır; Claude'a yazma.")
+        k = (getpass.getpass("Anahtar: ") if sys.stdin.isatty() else sys.stdin.readline()).strip()
+    else: k = pencere(name)
+    if not k: sys.exit("anahtar girilmedi, hiçbir şey yazılmadı")
     d = stored(); d[name] = k
     os.makedirs(os.path.dirname(KEYFILE), exist_ok=True)
     with open(KEYFILE, "w", encoding="utf-8") as f: json.dump(d, f)
@@ -102,7 +130,7 @@ def sil(name):
         print(f"{name} anahtarı silindi. Sızdıysa servisin sitesinden de iptal et.")
 
 if __name__ == "__main__":
-    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stdout.reconfigure(encoding="utf-8"); sys.stderr.reconfigure(encoding="utf-8")
     a = sys.argv[1:]
     if not a: print(__doc__); sys.exit(0)
     if a[0] == "durum": durum()

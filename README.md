@@ -56,7 +56,7 @@ python animasyon-studyosu/scripts/baglan.py oneri gercekci
 - 🎥 **Gemini Omni Flash:** API ile AI video (ayrı ücretlidir). `python animasyon-studyosu/scripts/baglan.py ekle gemini`
 - 🌊 **Google Flow:** herkese açık API'si yok, kendi aboneliğinle tarayıcıdan kullanılır.
 
-🔐 Anahtarını Claude'a yazma: kendi terminaline gir. Sadece kendi bilgisayarında, depo dışında durur. Para harcayan her üretim önce sorar, `--onay` olmadan istek gitmez.
+🔐 Anahtarını Claude'a yazma: `ekle` komutu küçük bir pencere açar, oraya yapıştır. Sadece kendi bilgisayarında, depo dışında durur. Para harcayan her üretim önce sorar, `--onay` olmadan istek gitmez.
 
 ## Başlangıç
 Claude Code'da "yeni bir video yapalım" demen yeterli. Elle proje kurmak için:

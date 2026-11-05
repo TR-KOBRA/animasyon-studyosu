@@ -14,7 +14,7 @@ Eksik ÖNERİ varsa ne kazandıracağını ve maliyetini tek cümleyle söyle, k
 İşi durdurma: bağlı olmayan servisin yerine geçen yol hep var. Kullanıcı istemedikçe aynı öneriyi tekrar etme.
 
 ## Anahtar güvenliği
-- **Anahtarı sohbette isteme.** Kullanıcı kendi terminalinde girer: `python scripts/baglan.py ekle elevenlabs`.
+- **Anahtarı sohbette isteme.** `python scripts/baglan.py ekle elevenlabs --pencere` komutunu arka planda sen başlat: ekranda küçük pencere açılır, kullanıcı yapıştırıp Kaydet'e basar. Terminal yolu: `--terminal`.
 - Kullanıcı anahtarı sohbete yapıştırırsa kullanma ve hiçbir dosyaya yazma. Sohbete düştüğü için sızmış say:
   servisin sitesinden iptal edip yenisini oluşturmasını söyle.
 - Anahtarı ekrana, kayda, komut satırına, proje dosyasına ya da GitHub'a yazma. Doğrulama: `baglan.py dogrula`.

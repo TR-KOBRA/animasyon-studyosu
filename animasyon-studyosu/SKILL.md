@@ -78,7 +78,7 @@ Her zaman:
   olmamış olayı (yıkım) gerçekmiş gibi gösterme, sembolik anlat.
 - **Bilgisayarı asla sormadan kapatma** ("yatıyorum" onay değildir).
 - İndirme, dış servise yükleme, kredi harcayan üretim (Flow, Blender generate_3d): önce izin, maliyeti söyle.
-- **API anahtarını sohbette isteme.** Kullanıcı kendi terminalinde `baglan.py ekle` ile girer. Sohbete yapıştırırsa kullanma, iptal ettirip yenisini aldır.
+- **API anahtarını sohbette isteme.** `baglan.py ekle <servis> --pencere` komutunu arka planda başlat, kullanıcı açılan pencereye yapıştırır. Sohbete yapıştırırsa kullanma, iptal ettirip yenisini aldır.
 - Klasör yolları ASCII (Türkçe karakterli yollar araçları bozuyor).
 
 ## 4. Kodla film: hızlı başlangıç (anidoodle motoru; elle çizim, 2D ve low-poly tarzları)
