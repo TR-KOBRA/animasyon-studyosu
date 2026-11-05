@@ -1,3 +1,5 @@
+// Derived from anidoodle (Copyright 2026 Alex Greenshpun), modified for this project.
+// Licensed under the Apache License 2.0: see LICENSES/Apache-2.0.txt and NOTICE.
 import { Gfx, rng, tube, type Ctx, type Env, type Medium, type P } from "./core";
 import { blob, bounds, clamp, clipped, fillShape, mix, smooth } from "./gallery";
 import { GLYPHS, glyph, advance, measure, type Face } from "./scrapbookKit";

@@ -1,3 +1,5 @@
+// Derived from anidoodle (Copyright 2026 Alex Greenshpun), modified for this project.
+// Licensed under the Apache License 2.0: see LICENSES/Apache-2.0.txt and NOTICE.
 import { Gfx, type Ctx, type Env, type P } from "./core";
 import { Film } from "./film";
 import * as W from "./gokWorld";

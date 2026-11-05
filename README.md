@@ -52,4 +52,4 @@ bash ~/.claude/skills/animasyon-studyosu/scripts/yeni_proje.sh ornek --tarz wren
 - Claude ses dinleyemez: sonuçları ölçer, kulak kontrolü sende.
 
 ## Lisans
-Apache-2.0. Bkz. `LICENSE` ve `NOTICE`.
+MIT (`LICENSE`). anidoodle'dan türeyen üç şablon dosyası Apache-2.0 altında kalır: `NOTICE` ve `LICENSES/Apache-2.0.txt`.

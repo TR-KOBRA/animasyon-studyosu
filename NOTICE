@@ -1,10 +1,15 @@
 animasyon-studyosu
 
-Licensed under the Apache License, Version 2.0 (see LICENSE).
+Licensed under the MIT License (see LICENSE), except for the files below.
 
-This skill builds on, and its template code derives from, anidoodle
-(Copyright 2026 Alex Greenshpun, Apache-2.0). anidoodle itself is not included:
-install it separately.
+These files derive from anidoodle (Copyright 2026 Alex Greenshpun) and remain
+under the Apache License 2.0 (LICENSES/Apache-2.0.txt). They were modified for
+this project:
+- animasyon-studyosu/assets/sablon/gokWorld.ts
+- animasyon-studyosu/assets/sablon/kdKit.ts
+- animasyon-studyosu/assets/sablon/sablon.ts
+
+anidoodle itself is not included: install it separately.
 
 Ideas credited, no code copied:
 - Barty-Bart/motion-graphics (MIT): measured sound pass, after Vox's approach
