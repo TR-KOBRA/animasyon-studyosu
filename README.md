@@ -27,14 +27,21 @@ Claude Code için tam donanımlı bir video stüdyosu. Gerçek yayınlarda, ger�
 - 🔊 **Ses:** seslendirme oturtma, daktilo, ortam, efekt, müzik miksi, -14 LUFS teslim
 - 🏷️ **Marka:** logo işleme, açılış ve kapanış, birden fazla sayfa ve müşteri
 
-## Kurulum
-1. `animasyon-studyosu` klasörünü `~/.claude/skills/` altına kopyala.
-2. Gerekenler: Claude Code, Node.js, Python 3.11, FFmpeg, Playwright Chromium ve [anidoodle](https://github.com/alexgreensh/anidoodle) skill'i (`~/.claude/skills/anidoodle`).
-3. Ses için: `~/araclar/venv` içinde `faster-whisper`, `numpy`, `librosa`.
-4. İsteğe bağlı: `~/araclar/venv_goruntu` içinde `scenedetect[opencv]`, `rembg[cpu,cli]`; `~/araclar/rhubarb` ve `~/araclar/rife` (Windows sürümleri). Klasör farklıysa `ARACLAR` ortam değişkenini ver.
-5. Birlikte çalıştığı skill'ler (isteğe bağlı): hyperframes, media-use, humanizer.
+## ⚡ Kurulum
 
-Betikler Windows üzerinde Git Bash ile denendi. Başka sistemlerde ara araç yolları değişebilir.
+Önce Claude Code, Git, Node.js, Python ve FFmpeg kurulu olsun. Sonra:
+
+```bash
+git clone https://github.com/TR-KOBRA/animasyon-studyosu.git
+cd animasyon-studyosu
+bash kur.sh
+```
+
+Kendi sesinle anlatımlı video yapacaksan `bash kur.sh --ses` kullan (yaklaşık 650 MB). Betik, çizim motoru [anidoodle](https://github.com/alexgreensh/anidoodle)'ı orijinal deposundan indirir. Yeni sürüme geçmek için: `bash kur.sh --guncelle`.
+
+İsteğe bağlı araçlar: `~/araclar/venv_goruntu` içinde `scenedetect`, `rembg[cpu,cli]`; `~/araclar/rhubarb` ve `~/araclar/rife` (Windows sürümleri). Klasör farklıysa `ARACLAR` ortam değişkenini ver. Birlikte çalıştığı skill'ler: hyperframes, media-use, humanizer.
+
+Windows üzerinde Git Bash ile denendi. Başka sistemlerde yollar değişebilir.
 
 ## Başlangıç
 Claude Code'da "yeni bir video yapalım" demen yeterli. Elle proje kurmak için:
