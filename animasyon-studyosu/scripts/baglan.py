@@ -91,22 +91,27 @@ def dogrula():
         except urllib.error.HTTPError as e: print(f"  ❌ {name}: anahtar reddedildi (HTTP {e.code})")
         except OSError as e: print(f"  ❌ {name}: bağlanılamadı ({e})")
 
+def ozet(s):
+    """the shape of pasted text with none of its content, so a failed paste can be explained"""
+    s = s.strip()
+    return f"{len(s)} karakter" + (", boşluklu" if re.search(r"\s", s) else "") + (", sk_ ile başlıyor" if s.startswith("sk_") else "") + (", özel işaretli" if not s.isascii() else "") if s else "pano boş"
+
 def pencere(name):
     """a small masked window: the key never touches a terminal or the chat. An empty box never closes it,
     and the paste button works when Ctrl+V does not (Tk ignores it while Caps Lock is on)."""
     import tkinter as tk
     r = tk.Tk(); r.title(f"{name} anahtarı"); r.attributes("-topmost", True); r.resizable(False, False)
-    out = {"k": ""}
+    out = {"k": "", "son": ""}
     tk.Label(r, text=f"{name} API anahtarını yapıştır. Sadece bu bilgisayarda saklanır.", padx=16, pady=10).pack()
     e = tk.Entry(r, show="•", width=52); e.pack(padx=16); e.focus_force()
     info = tk.Label(r, text="Önce sitede anahtarı kopyala, sonra Yapıştır'a bas.", pady=6); info.pack()
     def goster(*_):
         ok_ = bool(temiz(name, e.get()))
-        info.config(text="Anahtar tamam, Kaydet'e bas." if ok_ else "Bu yazı anahtara benzemiyor: sitede sadece anahtarı kopyala.", fg="#1b6e2c" if ok_ else "#b00020")
+        info.config(text="Anahtar tamam, Kaydet'e bas." if ok_ else f"Anahtar değil: {out['son'] or 'kutu boş'}. Sitede sadece anahtarı kopyala.", fg="#1b6e2c" if ok_ else "#b00020")
     def yapistir(*_):
         try: k = r.clipboard_get()
         except tk.TclError: k = ""
-        e.delete(0, "end"); e.insert(0, temiz(name, k)); goster(); return "break"
+        out["son"] = ozet(k); e.delete(0, "end"); e.insert(0, temiz(name, k)); goster(); return "break"
     def ok(*_):
         k = temiz(name, e.get())
         if not k: goster(); return
@@ -116,7 +121,9 @@ def pencere(name):
     tk.Button(row, text="Kaydet", command=ok, padx=20).pack(side="left", padx=6)
     r.bind("<Return>", ok); e.bind("<Control-V>", yapistir); e.bind("<Button-3>", yapistir); e.bind("<KeyRelease>", goster)
     r.update_idletasks(); r.geometry(f"+{(r.winfo_screenwidth() - r.winfo_width()) // 2}+{(r.winfo_screenheight() - r.winfo_height()) // 3}")
-    r.mainloop(); return out["k"]
+    r.mainloop()
+    if not out["k"] and out["son"]: print(f"son yapıştırılan: {out['son']}", file=sys.stderr)
+    return out["k"]
 
 def ekle(name):
     if name not in ENV: sys.exit(f"bilinmeyen servis: {name}")
