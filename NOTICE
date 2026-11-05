@@ -1,0 +1,11 @@
+animasyon-studyosu
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This skill builds on, and its template code derives from, anidoodle
+(Copyright 2026 Alex Greenshpun, Apache-2.0). anidoodle itself is not included:
+install it separately.
+
+Ideas credited, no code copied:
+- Barty-Bart/motion-graphics (MIT): measured sound pass, after Vox's approach
+- charlie947/motion-graphics-skills (MIT): reading a reference video, explainer review rules
