@@ -54,7 +54,7 @@ verirsin ve kalite kapısından (`references/kalite-kapilari.md`) geçirmeden hi
 | 3. Metin | `SESLENDIRME.txt` + bilgi dosyası; 2-3 kritik yer A/B işaretli | `hikaye-ve-metin.md` |
 | (bekleme) | ses: kullanıcı kaydı/şarkıyı verir ya da AI sesi üretilir; onay değil, sıranın gereği | `ses.md` |
 | 4. Sahne listesi | sese göre, `assets/sahne_listesi_sablonu.md` | `sahne-tasarimi.md` |
-| 5. Final | video + Reels kapağı + `kontrol.py` raporu + kontrol sayfası | `kalite-kapilari.md` |
+| 5. Final | video + ayrı çizilmiş Reels kapağı + `kontrol.py` raporu + kontrol sayfası | `kalite-kapilari.md`, `kapak.md` |
 
 Her zaman:
 - **Göstermeden önce `references/zevk-profili.md`'ye karşı kontrol et.** Oradaki her madde, geçmişte

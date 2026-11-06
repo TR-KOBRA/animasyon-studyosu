@@ -57,7 +57,7 @@ Kullanıcıya hiçbir zaman kendin bakmadığın bir kare/video gösterme.
 - [ ] `python film/tools/kontrol.py <final.mp4> --film <ad.ts> --max 89` temiz (süre, çözünürlük, fps,
       -14 LUFS ±1, gerçek tepe ≤ -1 dBTP, siyah kare yok, donma yok, uzun sessizlik yok).
 - [ ] Kontrol sayfası (`kontrol.py` her çekimden kare çıkarır): altyazı yazımı, logo, kesik nesne.
-- [ ] İlk kare ve son kare ayrıca kontrol (kapak ve kapanış). Reels kapağı çıkarıldı.
+- [ ] İlk kare ve son kare ayrıca kontrol. Reels kapağı videodan kare alınmadan, ayrı sahne olarak çizildi (`kapak.md`).
 - [ ] Final sesi yazıya dök (`yaziya_dok.py`), metinle karşılaştır: her cümle duyuluyor mu, sırası doğru
       mu, son replik sonda sönen bölüme düşmüş mü? (bir işte bölünen cümleler sessiz çıktı, kullanıcı yakaladı.)
 - [ ] Müzikli işte kesme hatası `vurus_izgara.py` ile ölçüldü; `CREDITS.txt` yazıldı; mono ses kontrol edildi.
