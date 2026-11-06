@@ -64,7 +64,7 @@ Kullanıcıya hiçbir zaman kendin bakmadığın bir kare/video gösterme.
 - [ ] Rapora kullanıcının kulaklıkla bakacağı en riskli 5 an eklendi; "sesi güzel" denmedi, ölçüm verildi.
 - [ ] Sessiz izleme testi: ilk 3 sn'nin karelerine sesi düşünmeden bak; konu ve merak anlaşılıyor mu?
 - [ ] Ekrandaki her yazı okunacak kadar duruyor mu (kelime başına 0,3 sn, en az 0,7 sn)?
-- [ ] Dosya adı anlamlı, masaüstüne kopyalandı; rapor yazıldı.
+- [ ] Dosya adı anlamlı, `teslim.sh` ile `<ad> stok` ve `<ad> stok kapak` klasörlerine kondu; rapor yazıldı.
 
 ## Revizyon gelince
 - İsteği kelimesi kelimesine not al (`REVIZYON.md`: tarih, istek, yapılan). Belirsizse tek soru sor.

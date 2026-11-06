@@ -20,6 +20,6 @@ Onaylanan brif projenin köküne `BRIF.md` olarak kaydedilir; sonraki her karar 
 | Çağrı | <tek cümle> | haber sayfasında vaat yok |
 | Referans | <örnek video / fotoğraf linkleri> | GORSEL_REFERANS.md |
 | Temsili ibaresi | var / yok | canlandırma varsa sor |
-| Teslim | Desktop/<Ad>.mp4 + kapak | |
+| Teslim | `<sayfa> stok` (video) + `<sayfa> stok kapak` (ayrı çizilmiş kapak) | |
 
 Açık sorular (varsa en fazla 3): …

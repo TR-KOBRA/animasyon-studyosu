@@ -32,6 +32,8 @@ tek kare alınır:
 node tools/still.mjs <ad>kapak --frames 5 --scale 1 --out out/kapak.png
 ```
 
+Bitince `scripts/teslim.sh` ile `<ad> stok kapak` klasörüne koy.
+
 ## Kontrol
 - [ ] Bu sahne videonun hiçbir çekiminde yok mu?
 - [ ] Sesi ve metni bilmeyen biri kareye bakınca "bu ne?" der mi?

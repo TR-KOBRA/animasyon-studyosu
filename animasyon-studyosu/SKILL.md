@@ -107,6 +107,17 @@ python film/tools/kontrol.py film/out/<ad>_final.mp4 --film film/src/canvas-core
 Süre, çözünürlük, fps, -14 LUFS, gerçek tepe, siyah kare, donmuş görüntü (ölü zaman), uzun sessizlik;
 ayrıca her çekimin ortasından kare içeren kontrol sayfası (Read ile bak). ❌ varsa düzeltmeden teslim etme.
 
+## Teslim klasörleri
+Bitmiş işi masaüstüne tek tek dosya olarak bırakma. Her sayfa, marka ya da iş için iki klasör vardır:
+video `<ad> stok`, kapak `<ad> stok kapak`. Betik klasörü yoksa açar, varsa onu kullanır:
+
+```bash
+bash ~/.claude/skills/animasyon-studyosu/scripts/teslim.sh "<ad>" --video film/out/<ad>_final.mp4 --kapak film/out/kapak.png
+```
+
+`<ad>` işin yapıldığı sayfa ya da müşteridir; bilinmiyorsa brifte sor. Kullanıcı başka yer söylerse onun dediği geçerli.
+Kapak videodan kare alınmaz, ayrı sahne çizilir: `references/kapak.md`.
+
 ## 6. Yardımcı araçlar (kuruldu, denendi)
 
 | İhtiyaç | Komut (`scripts/`) | Sınır |

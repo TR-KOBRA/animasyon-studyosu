@@ -38,7 +38,7 @@ onayı, sonra kod, kontak sayfası, cilalama (`promptlar/10-cilalama.md`).
 - Kullanıcı metinde değişiklik isterse sadece istenen yeri değiştir; anlamı koru.
 
 ## Aşama 2 · Kayıt geldikten sonra
-- Kullanıcıya nereye koyacağını söyle (genelde Masaüstü, konu klasörü; telefon kaydı .mp4 olabilir).
+- Kullanıcıya nereye koyacağını söyle (genelde proje klasörü; telefon kaydı .mp4 olabilir).
   "Kayıt hazır" deyince en yeni ses/video dosyasını bul, adını doğrulat. Sayıyı yanlış anlama:
   "girişi 2 sn çek" 2 sn olsun demekti, uzat değil; belirsiz sayıda tek soru sor.
 - Kaydı `kayit/` klasörüne al, kelime zamanlarını çıkar, metinle karşılaştır (kullanıcının okuduğu
@@ -61,9 +61,8 @@ onayı, sonra kod, kontak sayfası, cilalama (`promptlar/10-cilalama.md`).
   günlüklerindeki `wall clock` satırına bak, tahmin uydurma).
 
 ## Aşama 5 · Teslim
-- Final: `Desktop/<Konu>_<Sayfa>.mp4` (+ sayfanın klasörüne kopya). Reels kapağı: simgenin en güçlü
-  karesi, yazısız ya da tek kısa başlıkla: `ffmpeg -ss <sn> -i final.mp4 -frames:v 1 Desktop/<Konu>_kapak.png`.
-  Rapor: süre, LUFS, kontrol edilen kareler, açık kararlar.
+- Final: `<Konu>_<Sayfa>.mp4`, `teslim.sh` ile `<sayfa> stok` klasörüne. Reels kapağı videodan kare alınmaz:
+  ayrı sahne çizilir ve `<sayfa> stok kapak` klasörüne konur (`kapak.md`).
 - Gece çalışırken: `SABAH_RAPORU.md` gibi bir rapor bırak.
 - Bilgisayarı kapatmak: SADECE açık onayla (`shutdown /s /t 120`, iptal `shutdown /a`).
 

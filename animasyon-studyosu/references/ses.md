@@ -43,7 +43,7 @@ bu kabul edilmez). Seviye en sonda düz kazançla -14 LUFS.
 8. **Teslim**: `bash film/tools/birlestir.sh film/out/<ad>_sessiz.mp4 film/out/mix.wav film/out/<ad>_final.mp4`
    (-14 LUFS'a düz kazanç, tepe -1 dBTP'yi geçmez; son 1,6 sn söner, video sonuna kadar uzar; son konuşma
    sönmeden önce bitmeli, yoksa 4. argümanla kısalt). Ses videodan uzunsa render eski demektir: hata verir.
-   Oturttuktan sonra render'ı YENİLE. Sonra masaüstüne kopyala.
+   Oturttuktan sonra render'ı YENİLE. Sonra `teslim.sh` ile teslim klasörüne koy.
 9. **Doğrula**: `python film/tools/kontrol.py film/out/<ad>_final.mp4 --film film/src/canvas-core/<ad>.ts --max 89`
    ve final sesini `yaziya_dok.py` ile yazıya dök, her cümle sırasıyla duyuluyor mu karşılaştır.
 
